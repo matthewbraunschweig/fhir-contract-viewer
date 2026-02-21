@@ -7,8 +7,10 @@ type FhirContract = Record<string, any>;
 function getOfferTexts(node: any, out: string[] = []) {
   if (!node || typeof node !== "object") return out;
   if (node.offer?.text) out.push(node.offer.text);
-  if (Array.isArray(node.group)) node.group.forEach((g) => getOfferTexts(g, out));
-  if (Array.isArray(node.term)) node.term.forEach((t) => getOfferTexts(t, out));
+if (Array.isArray(node.group))
+  node.group.forEach((g: any) => getOfferTexts(g, out));
+if (Array.isArray(node.term))
+  node.term.forEach((t: any) => getOfferTexts(t, out));
   return out;
 }
 
